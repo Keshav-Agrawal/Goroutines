@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	fmt.Println("Race condition - LearnCodeonline.in")
+	
 
 	wg := &sync.WaitGroup{}
 	mut := &sync.RWMutex{}
@@ -21,7 +21,7 @@ func main() {
 		mut.Unlock()
 		wg.Done()
 	}(wg, mut)
-	//wg.Add(1)
+	
 	go func(wg *sync.WaitGroup, m *sync.RWMutex) {
 		fmt.Println("Two R")
 		mut.Lock()
@@ -37,7 +37,7 @@ func main() {
 		wg.Done()
 	}(wg, mut)
 	go func(wg *sync.WaitGroup, m *sync.RWMutex) {
-		fmt.Println("Three R")
+		fmt.Println("Four R")
 		mut.RLock()
 		fmt.Println(score)
 		mut.RUnlock()
